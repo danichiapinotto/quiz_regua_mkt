@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Alta Conversão</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #quiz-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff3b30;
+            margin-bottom: 1rem;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-button {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .quiz-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .quiz-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <div class="timer">Tempo restante: <span id="countdown">5</span>s</div>
+    <h2>Qual o seu foco agora?</h2>
+    
+    <div class="options-container">
+        <button class="quiz-button" onclick="selectOption('Performance')">Melhorar meu Pace/Performance</button>
+        <button class="quiz-button" onclick="selectOption('Emagrecimento')">Emagrecimento e Definição</button>
+        <button class="quiz-button" onclick="selectOption('Saude')">Saúde, Longevidade e Bem-estar</button>
+    </div>
+</div>
+
+<script>
+    let timeLeft = 5;
+    const downloadTimer = setInterval(function(){
+        if(timeLeft <= 0){
+            clearInterval(downloadTimer);
+            document.getElementById("countdown").innerHTML = "0";
+            // Aqui você pode disparar um evento ou redirecionar caso o tempo acabe
+        } else {
+            document.getElementById("countdown").innerHTML = timeLeft;
+        }
+        timeLeft -= 1;
+    }, 1000);
+
+    function selectOption(choice) {
+        clearInterval(downloadTimer);
+        alert("Você selecionou: " + choice + ". Redirecionando para a melhor estratégia...");
+        
+        // Exemplo de integração com Traqueamento (GTM/Facebook Pixel)
+        // window.dataLayer = window.dataLayer || [];
+        // window.dataLayer.push({'event': 'quiz_completed', 'quiz_choice': choice});
+        
+        // Redirecionamento baseado na escolha
+        // window.location.href = "sua-url-de-destino.com?segmento=" + choice;
+    }
+</script>
+
+</body>
+</html>
