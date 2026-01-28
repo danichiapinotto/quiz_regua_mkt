@@ -72,13 +72,20 @@
         .quiz-button:active {
             transform: translateY(0);
         }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
 
 <div id="quiz-container">
-    <div class="timer">Tempo restante: <span id="countdown">5</span>s</div>
-    <h2>Qual o seu foco agora?<br>Clique na opção da sua preferência.</h2>
+    <h2>Qual o seu foco agora?</h2>
+    <p class="subtitle">Clique na opção da sua preferência.</p>
     
     <div class="options-container">
         <button class="quiz-button" onclick="selectOption('Performance')">Melhorar meu Pace/Performance</button>
